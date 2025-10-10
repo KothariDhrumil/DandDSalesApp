@@ -53,6 +53,12 @@ dev_dependencies:
   json_serializable: ^6.7.1
   riverpod_generator: ^2.3.9
   retrofit_generator: ^8.0.6
+  
+  # Testing
+  mockito: ^5.4.4
+  integration_test:
+    sdk: flutter
+  network_image_mock: ^2.1.1
 
 flutter:
   uses-material-design: true
