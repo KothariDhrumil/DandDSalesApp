@@ -237,12 +237,14 @@ After each successful build:
 2. Select the latest workflow run
 3. Download the APK from artifacts section
 
+**Quick Start**: See [.github/QUICK_START.md](.github/QUICK_START.md) for step-by-step instructions.
+
 ### Manual Deployments
 Ready-to-use manual deployment workflows for:
 - 📱 Google Play Store (requires setup)
 - 🍎 Apple App Store (requires setup)
 
-See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed deployment instructions.
+**Full Guide**: See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed deployment instructions.
 
 ## 📖 API Documentation
 
