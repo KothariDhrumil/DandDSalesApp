@@ -1,5 +1,7 @@
 # D&D Sales App
 
+![Build Status](https://github.com/KothariDhrumil/DandDSalesApp/actions/workflows/build-and-deploy.yml/badge.svg)
+
 Enterprise-level Flutter application for Sales and Distribution management, designed for Traders and Manufacturing businesses.
 
 ## 🎯 Features
@@ -218,6 +220,31 @@ flutter build apk --release
 ```bash
 flutter build ios --release
 ```
+
+## 🚀 CI/CD Pipeline
+
+This project includes automated CI/CD pipeline using GitHub Actions.
+
+### Automatic Builds
+- ✅ Automated APK builds on every push to `main`/`master`
+- ✅ Code analysis and testing
+- ✅ Artifact generation for easy download
+- ✅ Build retention for 30 days
+
+### Download APK
+After each successful build:
+1. Go to [Actions tab](../../actions)
+2. Select the latest workflow run
+3. Download the APK from artifacts section
+
+**Quick Start**: See [.github/QUICK_START.md](.github/QUICK_START.md) for step-by-step instructions.
+
+### Manual Deployments
+Ready-to-use manual deployment workflows for:
+- 📱 Google Play Store (requires setup)
+- 🍎 Apple App Store (requires setup)
+
+**Full Guide**: See [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md) for detailed deployment instructions.
 
 ## 📖 API Documentation
 

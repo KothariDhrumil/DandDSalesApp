@@ -1,0 +1,180 @@
+# CI/CD Pipeline for D&D Sales App
+# This workflow automatically builds the app and generates APK files
+# See .github/QUICK_START.md for download instructions
+# See DEPLOYMENT_GUIDE.md for store deployment setup
+
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      deploy_to_playstore:
+        description: 'Deploy to Google Play Store'
+        required: false
+        type: boolean
+        default: false
+      deploy_to_appstore:
+        description: 'Deploy to Apple App Store'
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  build-android:
+    name: Build Android APK
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          cache: 'gradle'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Run code generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Run tests
+        run: flutter test
+
+      - name: Build Android APK (Release)
+        run: flutter build apk --release
+
+      - name: Build Android App Bundle (Release)
+        run: flutter build appbundle --release
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-apk-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+          retention-days: 30
+
+      - name: Upload App Bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-appbundle-release
+          path: build/app/outputs/bundle/release/app-release.aab
+          retention-days: 30
+
+      - name: Create Release Notes
+        run: |
+          echo "## Build Information" > release-notes.txt
+          echo "- Build Date: $(date)" >> release-notes.txt
+          echo "- Commit: ${{ github.sha }}" >> release-notes.txt
+          echo "- Branch: ${{ github.ref_name }}" >> release-notes.txt
+          echo "- Flutter Version: 3.24.0" >> release-notes.txt
+
+      - name: Upload Release Notes
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-notes
+          path: release-notes.txt
+          retention-days: 30
+
+  deploy-to-playstore:
+    name: Deploy to Google Play Store
+    needs: build-android
+    runs-on: ubuntu-latest
+    if: github.event.inputs.deploy_to_playstore == 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download App Bundle
+        uses: actions/download-artifact@v4
+        with:
+          name: android-appbundle-release
+
+      - name: Setup Google Play Service Account
+        run: |
+          echo "🚀 Google Play Store deployment configured but requires:"
+          echo "   1. Service account JSON key"
+          echo "      (stored as secret: PLAYSTORE_SERVICE_ACCOUNT_JSON)"
+          echo "   2. App signing configuration"
+          echo "   3. Package name registration"
+          echo ""
+          echo "To complete setup, add service account JSON"
+          echo "to GitHub Secrets and uncomment deployment steps."
+
+      # Uncomment and configure when ready to deploy
+      # - name: Deploy to Play Store
+      #   uses: r0adkll/upload-google-play@v1
+      #   with:
+      #     serviceAccountJson: ${{ secrets.PLAYSTORE_SERVICE_ACCOUNT_JSON }}
+      #     packageName: com.dandd.salesapp
+      #     releaseFiles: app-release.aab
+      #     track: internal
+      #     status: completed
+
+  deploy-to-appstore:
+    name: Deploy to Apple App Store
+    runs-on: macos-latest
+    if: github.event.inputs.deploy_to_appstore == 'true'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.24.0'
+          channel: 'stable'
+          cache: true
+
+      - name: Get Flutter dependencies
+        run: flutter pub get
+
+      - name: Run code generation
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Setup iOS build environment
+        run: |
+          echo "🚀 Apple App Store deployment configured but requires:"
+          echo "   1. Apple Developer account"
+          echo "   2. Provisioning profiles"
+          echo "   3. Code signing certificates"
+          echo "   4. App Store Connect API key"
+          echo ""
+          echo "To complete setup, configure iOS signing"
+          echo "and add secrets:"
+          echo "   - APPSTORE_API_KEY_ID"
+          echo "   - APPSTORE_API_ISSUER_ID"
+          echo "   - APPSTORE_API_PRIVATE_KEY"
+
+      # Uncomment and configure when ready to deploy
+      # - name: Build iOS IPA
+      #   run: |
+      #     flutter build ipa --release \
+      #       --export-options-plist=ios/ExportOptions.plist
+
+      # - name: Deploy to TestFlight
+      #   uses: apple-actions/upload-testflight-build@v1
+      #   with:
+      #     app-path: build/ios/ipa/*.ipa
+      #     issuer-id: ${{ secrets.APPSTORE_API_ISSUER_ID }}
+      #     api-key-id: ${{ secrets.APPSTORE_API_KEY_ID }}
+      #     api-private-key: ${{ secrets.APPSTORE_API_PRIVATE_KEY }}
