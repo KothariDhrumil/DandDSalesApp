@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'core/config/app_config.dart';
-import 'core/config/router_config.dart';
+import 'core/config/router_config.dart' as app_router;
 import 'core/logging/app_logger.dart';
 import 'core/storage/local_storage_service.dart';
 import 'core/theme/app_theme.dart';
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode.light,
-      routerConfig: RouterConfig.router,
+      routerConfig:app_router.RouterConfig.router,
     );
   }
 }
