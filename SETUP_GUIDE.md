@@ -254,9 +254,12 @@ pod install
 ```
 
 #### 3. "Gradle build failed" (Android)
+- The project now uses Gradle 8.5 and Android Gradle Plugin 8.3.0
+- Ensure Android SDK 34 is installed via Android Studio SDK Manager
 - Update Android SDK
-- Check `android/app/build.gradle` for minimum SDK version
+- Check `android/app/build.gradle` for minimum SDK version (minSdk 21, targetSdk 34)
 - Clear cache: `flutter clean`
+- If Gradle daemon issues persist: `cd android && ./gradlew --stop && rm -rf .gradle`
 
 #### 4. "Code generation failed"
 - Ensure model classes are correctly annotated
