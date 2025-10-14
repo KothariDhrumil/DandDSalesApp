@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import '../logging/app_logger.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
 
 /// Local storage service for non-sensitive data
 class LocalStorageService {

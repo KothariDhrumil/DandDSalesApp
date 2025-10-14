@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/network/dio_client.dart';
-import '../../../../core/storage/secure_storage_service.dart';
-import '../../data/repositories/auth_repository_impl.dart';
-import '../../domain/models/auth_response.dart';
-import '../../domain/models/user_model.dart';
-import '../../domain/repositories/auth_repository.dart';
+import 'package:dandd_sales_app/core/network/dio_client.dart';
+import 'package:dandd_sales_app/core/storage/secure_storage_service.dart';
+import 'package:dandd_sales_app/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/auth_response.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/user_model.dart';
+import 'package:dandd_sales_app/features/auth/domain/repositories/auth_repository.dart';
 
 /// Auth repository provider
 final authRepositoryProvider = Provider<AuthRepository>((ref) {

@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import '../config/app_config.dart';
-import '../logging/app_logger.dart';
-import 'interceptors/auth_interceptor.dart';
-import 'interceptors/logging_interceptor.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/core/network/interceptors/auth_interceptor.dart';
+import 'package:dandd_sales_app/core/network/interceptors/logging_interceptor.dart';
 
 /// Dio HTTP client configuration
 class DioClient {

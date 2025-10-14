@@ -1,5 +1,5 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
-import '../logging/app_logger.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
 
 /// Secure storage service for sensitive data
 class SecureStorageService {

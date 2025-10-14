@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
-import '../../config/app_config.dart';
-import '../../logging/app_logger.dart';
-import '../../storage/secure_storage_service.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/core/storage/secure_storage_service.dart';
 
 /// Authentication interceptor for adding tokens to requests
 class AuthInterceptor extends Interceptor {

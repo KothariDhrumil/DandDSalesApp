@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import '../../logging/app_logger.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
 
 /// Logging interceptor for API requests and responses
 class LoggingInterceptor extends Interceptor {

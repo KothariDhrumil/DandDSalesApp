@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../auth/presentation/providers/auth_provider.dart';
+import 'package:dandd_sales_app/features/auth/presentation/providers/auth_provider.dart';
 
 /// Dashboard page - main screen after login
 class DashboardPage extends ConsumerWidget {
@@ -33,7 +33,7 @@ class DashboardPage extends ConsumerWidget {
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.white,
                 child: Text(
-                  user?.name?.substring(0, 1).toUpperCase() ?? 'U',
+                  user?.name.substring(0, 1).toUpperCase() ?? 'U',
                   style: TextStyle(
                     fontSize: 40,
                     color: Theme.of(context).primaryColor,
@@ -109,7 +109,7 @@ class DashboardPage extends ConsumerWidget {
             const SizedBox(height: 16),
             
             // Statistics cards
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -119,7 +119,7 @@ class DashboardPage extends ConsumerWidget {
                     color: Colors.blue,
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: _StatCard(
                     icon: Icons.inventory,
@@ -131,7 +131,7 @@ class DashboardPage extends ConsumerWidget {
               ],
             ),
             const SizedBox(height: 12),
-            Row(
+            const Row(
               children: [
                 Expanded(
                   child: _StatCard(
@@ -141,7 +141,7 @@ class DashboardPage extends ConsumerWidget {
                     color: Colors.orange,
                   ),
                 ),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: _StatCard(
                     icon: Icons.attach_money,

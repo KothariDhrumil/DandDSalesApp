@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'core/config/app_config.dart';
-import 'core/config/router_config.dart' as app_router;
-import 'core/logging/app_logger.dart';
-import 'core/storage/local_storage_service.dart';
-import 'core/theme/app_theme.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
+import 'package:dandd_sales_app/core/config/router_config.dart' as app_router;
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/core/storage/local_storage_service.dart';
+import 'package:dandd_sales_app/core/theme/app_theme.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

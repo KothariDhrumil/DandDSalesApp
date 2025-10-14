@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pinput/pinput.dart';
-import '../../../../core/config/app_config.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/logging/app_logger.dart';
-import '../providers/auth_provider.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
+import 'package:dandd_sales_app/core/constants/app_constants.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/features/auth/presentation/providers/auth_provider.dart';
 
 /// OTP verification page
 class OtpPage extends ConsumerStatefulWidget {
@@ -12,9 +12,7 @@ class OtpPage extends ConsumerStatefulWidget {
   final String requestId;
   
   const OtpPage({
-    super.key,
-    required this.phoneNumber,
-    required this.requestId,
+    required this.phoneNumber, required this.requestId, super.key,
   });
   
   @override

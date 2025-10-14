@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../features/auth/presentation/pages/login_page.dart';
-import '../../features/auth/presentation/pages/otp_page.dart';
-import '../../features/dashboard/presentation/pages/dashboard_page.dart';
-import '../../features/profile/presentation/pages/profile_page.dart';
-import '../constants/app_constants.dart';
-import '../logging/app_logger.dart';
+import 'package:dandd_sales_app/features/auth/presentation/pages/login_page.dart';
+import 'package:dandd_sales_app/features/auth/presentation/pages/otp_page.dart';
+import 'package:dandd_sales_app/features/dashboard/presentation/pages/dashboard_page.dart';
+import 'package:dandd_sales_app/features/profile/presentation/pages/profile_page.dart';
+import 'package:dandd_sales_app/core/constants/app_constants.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
 
 /// Application router configuration using GoRouter
 class RouterConfig {

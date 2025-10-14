@@ -1,5 +1,5 @@
 import 'package:logger/logger.dart';
-import '../config/app_config.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
 
 /// Centralized logging utility for the application
 class AppLogger {

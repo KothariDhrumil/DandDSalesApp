@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../core/constants/app_constants.dart';
-import '../../../../core/logging/app_logger.dart';
-import '../providers/auth_provider.dart';
+import 'package:dandd_sales_app/core/constants/app_constants.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/features/auth/presentation/providers/auth_provider.dart';
 
 /// Login page with phone number input
 class LoginPage extends ConsumerStatefulWidget {

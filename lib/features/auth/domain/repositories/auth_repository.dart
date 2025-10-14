@@ -1,5 +1,5 @@
-import '../models/auth_response.dart';
-import '../models/user_model.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/auth_response.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/user_model.dart';
 
 /// Authentication repository interface
 abstract class AuthRepository {

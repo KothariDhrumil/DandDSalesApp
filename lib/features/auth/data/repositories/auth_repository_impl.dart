@@ -1,11 +1,11 @@
 import 'dart:convert';
-import '../../../../core/config/app_config.dart';
-import '../../../../core/logging/app_logger.dart';
-import '../../../../core/network/dio_client.dart';
-import '../../../../core/storage/secure_storage_service.dart';
-import '../../domain/models/auth_response.dart';
-import '../../domain/models/user_model.dart';
-import '../../domain/repositories/auth_repository.dart';
+import 'package:dandd_sales_app/core/config/app_config.dart';
+import 'package:dandd_sales_app/core/logging/app_logger.dart';
+import 'package:dandd_sales_app/core/network/dio_client.dart';
+import 'package:dandd_sales_app/core/storage/secure_storage_service.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/auth_response.dart';
+import 'package:dandd_sales_app/features/auth/domain/models/user_model.dart';
+import 'package:dandd_sales_app/features/auth/domain/repositories/auth_repository.dart';
 
 /// Implementation of authentication repository
 class AuthRepositoryImpl implements AuthRepository {

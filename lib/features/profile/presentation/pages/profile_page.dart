@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../auth/presentation/providers/auth_provider.dart';
+import 'package:dandd_sales_app/features/auth/presentation/providers/auth_provider.dart';
 
 /// User profile page
 class ProfilePage extends ConsumerWidget {
@@ -39,7 +39,7 @@ class ProfilePage extends ConsumerWidget {
                     radius: 50,
                     backgroundColor: Theme.of(context).primaryColor,
                     child: Text(
-                      user?.name?.substring(0, 1).toUpperCase() ?? 'U',
+                      user?.name.substring(0, 1).toUpperCase() ?? 'U',
                       style: const TextStyle(
                         fontSize: 48,
                         color: Colors.white,
