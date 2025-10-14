@@ -218,10 +218,88 @@ Riverpod providers are used throughout the app:
 
 ## 🧪 Testing
 
-Run tests using:
+Comprehensive testing suite following industry standards for mobile applications.
+
+### Test Coverage
+
+- ✅ **Unit Tests**: Models, repositories, services, providers (80%+ coverage)
+- ✅ **Widget Tests**: UI components, interactions, navigation
+- ✅ **Integration Tests**: Complete workflows and feature interactions
+- ✅ **E2E Tests**: End-to-end user journey testing
+
+### Running Tests
+
 ```bash
+# Run all tests
 flutter test
+
+# Run unit tests only
+flutter test test/unit/
+
+# Run widget tests only
+flutter test test/widget/
+
+# Run integration tests
+flutter test test/integration/
+
+# Run E2E tests
+flutter test integration_test/
+
+# Run with coverage report
+flutter test --coverage
+
+# Generate HTML coverage report
+genhtml coverage/lcov.info -o coverage/html
+open coverage/html/index.html
 ```
+
+### Test Structure
+
+```
+test/
+├── unit/                    # Unit tests for business logic
+│   ├── models/             # Model tests
+│   ├── repositories/       # Repository tests
+│   ├── services/           # Service tests
+│   └── providers/          # Provider/State tests
+├── widget/                 # Widget tests for UI
+│   └── pages/             # Page widget tests
+├── integration/           # Integration tests
+├── mocks/                 # Mock objects
+└── helpers/               # Test utilities
+
+integration_test/
+└── app_test.dart          # End-to-end tests
+```
+
+### Test Examples
+
+**Unit Test**:
+```dart
+test('should create UserModel from JSON', () {
+  final json = {'id': 'user-123', 'name': 'John'};
+  final user = UserModel.fromJson(json);
+  expect(user.id, 'user-123');
+});
+```
+
+**Widget Test**:
+```dart
+testWidgets('should render login page', (tester) async {
+  await tester.pumpWidget(LoginPage());
+  expect(find.byType(TextFormField), findsOneWidget);
+});
+```
+
+**Integration Test**:
+```dart
+test('complete auth flow', () async {
+  final otpResponse = await repository.sendOtp('1234567890');
+  expect(otpResponse.success, true);
+});
+```
+
+For detailed testing guide, see [TESTING_GUIDE.md](TESTING_GUIDE.md)
 
 ## 📦 Building for Production
 
