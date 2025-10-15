@@ -1,4 +1,4 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:riverpod/riverpod.dart';
 import 'package:dandd_sales_app/core/network/dio_client.dart';
 import 'package:dandd_sales_app/core/storage/secure_storage_service.dart';
 import 'package:dandd_sales_app/features/auth/data/repositories/auth_repository_impl.dart';
